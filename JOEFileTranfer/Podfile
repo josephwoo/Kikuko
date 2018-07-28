@@ -1,0 +1,16 @@
+ENV['COCOAPODS_DISABLE_STATS'] = "true"
+
+target 'FileTranfer' do
+    pod 'thrift', :podspec => 'thrift.podspec.json'
+
+  target 'FileTranferTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'FileTranferUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
