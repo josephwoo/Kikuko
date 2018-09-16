@@ -1,0 +1,16 @@
+PODS:
+  - thrift (0.9.3)
+
+DEPENDENCIES:
+  - thrift (from `thrift.podspec.json`)
+
+EXTERNAL SOURCES:
+  thrift:
+    :podspec: thrift.podspec.json
+
+SPEC CHECKSUMS:
+  thrift: 95cd6e5c0ebfa4baf47b30344703ade1ed44a9a6
+
+PODFILE CHECKSUM: 7640264c3cf5cce3b500d612bebbb67fb9b34480
+
+COCOAPODS: 1.1.1

@@ -14,7 +14,7 @@
 #import "TransferServ.h"
 #import "JOEFileIOer.h"
 
-static NSString *const kServiceHost = @"192.168.1.101";
+static NSString *const kServiceHost = @"192.168.0.104";
 static const UInt32 kServicePort = 8404;
 
 typedef NS_ENUM(NSUInteger, JFTFileType) {
@@ -120,7 +120,8 @@ typedef NS_ENUM(NSUInteger, JFTFileType) {
     if (!filePath) { return; }
 
     unsigned long long fileSize = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil].fileSize;
-    TRFileInfo *fileInfo = [[TRFileInfo alloc] initWithName:filePath.lastPathComponent path:filePath size:fileSize];
+    NSString *fileName = filePath.lastPathComponent;
+    TRFileInfo *fileInfo = [[TRFileInfo alloc] initWithName:fileName path:filePath size:fileSize];
     
     // start upload
     [self.uploadButton setEnabled:NO];
@@ -131,6 +132,7 @@ typedef NS_ENUM(NSUInteger, JFTFileType) {
         [ioer upload:fileInfo];
 
         @async_main_thread(^void() {
+            [self.client print_message:[@"Get => " stringByAppendingString:fileName]];
             [self.reconnectButton setEnabled:YES];
         });
     });
